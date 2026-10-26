@@ -1,0 +1,1 @@
+import {reply,hashToken,clearCookie} from './_lib.js';export async function onRequestPost({request,env}){const t=(request.headers.get('cookie')||'').match(/(?:^|; )treka_session=([a-f0-9]{64})/);if(t&&env.DB)await env.DB.prepare('DELETE FROM sessions WHERE token_hash=?').bind(await hashToken(t[1])).run();return reply({ok:true},200,{'set-cookie':clearCookie()})}

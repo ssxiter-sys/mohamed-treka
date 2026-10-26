@@ -1,0 +1,1 @@
+import {reply,current} from './_lib.js';export async function onRequestGet({request,env}){if(!env.DB)return reply({error:'قاعدة البيانات غير مربوطة.'},503);const user=await current(request,env.DB);return user?reply({user}):reply({user:null},401)}
