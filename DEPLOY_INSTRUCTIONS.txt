@@ -1,0 +1,12 @@
+MOHAMED TREKA - deployment steps
+
+1. Unzip this archive to a folder (do not upload ZIP via the Cloudflare dashboard).
+2. In CMD, cd /d "FULL_PATH_TO_EXTRACTED_FOLDER"
+3. Run: wrangler pages deploy . --project-name mohamed-treka-academy
+4. Keep the D1 binding named DB in Pages > Settings > Bindings.
+5. Visit https://mohamed-treka-academy.pages.dev/api/me
+   Expected JSON: {"user":null} (HTTP 401) if not signed in.
+   If HTML appears, Functions were not deployed or the request is not reaching them.
+6. Test registration with a NEW test phone number, then login.
+
+Note: the main teacher image has been re-encoded to WebP to avoid image decoding/cache issues. The API now displays a clear error if HTML is returned instead of JSON. Existing database records are not touched.
